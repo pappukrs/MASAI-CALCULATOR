@@ -14,76 +14,146 @@
             text-align:center;
             font-size: 40px;
             color:white;
-            margin-left:408px;
-            margin-right:500px;
+            margin-left:440px;
+            margin-right: 585px;
             margin-top:15px;
             margin-bottom:10px;
         }
 
-     #grid{
-         display:grid;
-         grid-template-columns: repeat(4,1fr);
-         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-         margin-left:400px;
-         margin-right:500px;
-         padding:3%;
-         gap:2%;
-     }
-     #grid>div{
-         margin:10px;
-         /* background-color:pink; */
-         width:auto;
-     }
-
-    #screen{
-       grid-column:1/span 4;
-       width:auto;
-       height:50px;
-    }
-    .font-width{
-        width:10px;
-        height:10px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        
-        font-size:20px;
-        padding:35px;
-        font-weight: 900;
-    }
-    .colorW{
-    background-color:white;
-    }
-    .colorB{
-        background-color:black;
-        color:white;
-    }
-    #box-Clear{
-        background-color:red;
-        color:white;
-    }
+        #formStyle{
+            background-color:#fff;
+            margin-left:440px;
+            margin-right: 585px;
+            margin-top:20px;
+            padding:40px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        form>input{
+            width:80px;
+            height:80px;
+            padding:20px;
+            background-color:#fff;
+            color:black;
+            font-size:30px;
+            font-weight: 700;
+            border-radius:20%;
+            margin:10px;
+            /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
      
+
+       #displayScreen{
+           width:92%;
+           height:80px;
+           border-radius:2px;
+       }
+
+        #clearALL{
+            background-color:red;
+            color:white;
+        }
+        .bgc{
+            background-color:black;
+            color:white;
+        }
 
     </style>
 </head>
 <body>
     <h1>MASAI CALCULATOR</h1>
-    <div id="grid" >
-    <div id="screen"  class="font-width colorW"></div>
-    <div id="box-1" class="font-width colorW">1</div>
-    <div id="box-2" class="font-width colorW">2</div>
-    <div id="box-3" class="font-width colorW">3</div>
-    <div id="box-plus" class="font-width colorB">+</div>
-    <div id="box-4" class="font-width colorW">4</div>
-    <div id="box-5" class="font-width colorW">5</div>
-    <div id="box-6" class="font-width colorW">6</div>
-    <div id="box-minus" class="font-width colorB">-</div>
-    <div id="box-7" class="font-width colorW">7</div>
-    <div id="box-8" class="font-width colorW">8</div>
-    <div id="box-9" class="font-width colorW">9</div>
-    <div id="box-multiply" class="font-width colorB">X</div>
-    <div id="box-Clear" class="font-width ">C</div>
-    <div id="box-0" class="font-width">0</div>
-    <div id="box-equalto" class="font-width colorB">=</div>
-    <div id="box-divide" class="font-width colorB">/</div>
-</div>
+    <div id="formStyle">
+     <form name="form">
+         <input  id="displayScreen" type="text" name="screen">
+         <br>
+
+         <input     type="button" value="1" onclick="form.screen.value +='1'  " >
+         <input     type="button" value="2" onclick="form.screen.value +='2' ">
+         <input    type="button" value="3" onclick="form.screen.value +='3' ">
+         <input  class="bgc" type="button" value="+" onclick="form.screen.value+='+' ">
+         
+         <br>
+
+         <input    type="button" value="4" onclick="form.screen.value+='4' ">
+         <input    type="button" value="5" onclick="form.screen.value+='5' ">
+         <input   type="button" value="6" onclick="form.screen.value+='6' ">
+         <input  class="bgc" type="button" value="-" onclick="form.screen.value+='-' ">
+
+         <br>
+
+         <input  type="button" value="7" onclick="form.screen.value+='7' ">
+         <input  type="button" value="8" onclick="form.screen.value+='8' ">
+         <input  type="button" value="9" onclick="form.screen.value+='9' ">
+         <input class="bgc" type="button" value="X" onclick="form.screen.value+='*' ">
+
+         <br>
+
+
+         <input  id="clearALL" type="button" value="C" onclick="form.screen.value = '' ">
+         <input   type="button" value="0" onclick="form.screen.value+='0' ">
+         <input  class="bgc" type="button" value="=" onclick="form.screen.value = eval(form.screen.value) ">
+         <input  class="bgc" type="button" value="/" onclick="form.screen.value+='/' ">
+
+
+     </form>
+    </div>
 </body>
+<script>
+    var screenBoard=document.querySelector("#screen");
+    screenBoard.innerText=0;
+
+    document.querySelector("#box-1").addEventListener("click",function(){
+        value(1);
+       
+
+    });
+    document.querySelector("#box-2").addEventListener("click",function(){
+        value(2);
+    });
+    document.querySelector("#box-3").addEventListener("click",function(){
+        value(3);
+    });
+    document.querySelector("#box-4").addEventListener("click",function(){
+        value(4);
+    });
+    document.querySelector("#box-5").addEventListener("click",function(){
+        value(5);
+    });
+    document.querySelector("#box-6").addEventListener("click",function(){
+        value(6);
+    });
+    document.querySelector("#box-7").addEventListener("click",function(){
+        value(7);
+    });
+    document.querySelector("#box-8").addEventListener("click",function(){
+        value(8);
+    });
+    document.querySelector("#box-9").addEventListener("click",function(){
+        value(9);
+    });
+    document.querySelector("#box-0").addEventListener("click",function(){
+        value(0);
+    });
+    document.querySelector("box-plus").addEventListener("click",function(){
+        value("+");
+    });
+    document.querySelector("box-minus").addEventListener("click",function(){
+        value("-");
+    });
+    document.querySelector("box-multiply").addEventListener("click",function(){
+        value("*");
+    });
+
+    var sum;
+     if(localStorage.getItem("SUM")===null){
+         sum=0;
+     }
+    else{
+        sum=localStorage.getItem("SUM");
+    }
+    function value(v){
+        sum+=v;
+        screenBoard.innerText=sum;
+    }
+</script>
 </html>
